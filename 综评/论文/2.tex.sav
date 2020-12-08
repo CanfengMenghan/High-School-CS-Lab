@@ -1,0 +1,254 @@
+\documentclass[12pt,a4paper]{article}%{ctexart}
+\usepackage{CTEX}
+\usepackage{geometry}
+\usepackage{graphicx}
+\geometry{left=2.54cm,right=2.54cm,top=3.18cm,bottom=3.18cm}
+
+\title{\textbf{\\~\\Emotion Analysis and Activities Recommendation Based on Comprehensive Quality Evaluation in Tsinghua University High School}}
+\author{\\~\\~\\Tsinghua University High School\\~\\Zhaoyang Tian\\~\\ \textbf{Advisor: } Yuyao Zhang\\~\\~\\~\\February,\ 2019}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\LARGE \centerline{\textbf{Abstract}}
+\normalsize
+
+aaa
+
+\textbf{Keywords: }
+
+JIEBA, WORDCLOUD, SVM, SnowNLP, Binary Discrimination, Emotion Analysis
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+\subsection{Research Background}
+
+With the reformation of College/University Entrance Examination(高等学校招生考试) in China, abbreviated as \emph{Gaokao}(高考), Chinese government and authority is impulsively transforming the enrollment system of colleges and universities from test-oriented to comprehensive-quality-oriented, which requires high schools and universities to become more concentrated on the all-round developments of students rather than their test scores. Chinese President Xi Jinping has proposed that CCP must take fostering integrity and promoting rounded development of people as the fundamental task of education. During the time, sponsored by Beijing Education Committee(北京市教育委员会), Tsinghua University High School has developed Comprehensive Quality Evaluation Platform for Beijing General High School Students(北京市普通高中学生综合素质评价平台)(CQE)[1], which aims that students can voluntarily upload the photos and text description and reveal their special activities and strength that cannot be reflected in class or by scores. It has a large number of dimensions, including Ideology and Morality(思想品德), Scholastic Achievement(学业成就), Physical and Mental Health(身心健康), Artistic Accomplishment(艺术成就), and Social Practice(社会实践). From the point of view of schools, they are able to utilize and analyze the data to provide a more welcomed school for students. However, the information behind the data remains unknown.
+
+\subsection{Current Research Status}
+
+It has been a long time since education has been invented. [2] Nevertheless, the past research mostly focus on methodology and unique example conducted by a few researchers, with the limitation of small amount of data. With the presence of the new information age, it is possible for individual researchers to gather large amounts of data and and analyze the law behind the data. In the study conducted by Bingbing Xu [3], she advocates broadening research perspectives and introduced Key Competencies Assessment into the Student Assessment system in high school, to realize the transformation from ``Comprehensive Quality Assessment" to ``Key Competencies Assessment" in high school. In the study conducted by Zhaohui Chen [4], He selects a high school to apply the ``3R" model to implement the comprehensive quality evaluation as a case study to examine the effectiveness of current evaluation system. The previous two researchers fully and wholly conclude the origin, development, and the prospect of CQE. There are also many other researchers who provide insight to the understanding[5], concept[6], dilemma[7], solution[8], and value[9] of CQE. Nonetheless, none of the article mentions how to utilize the data in a proper way.
+
+One of the significant researches is done by Dianjun Wang, Hui Ju, Weidong Meng[10], who are the initiator of CQE and the headmaster of the school. They elucidate the concept, design, purpose, as well as significance of CQE in detail. They also point out the fact that school can utilize the data in CQE to analyze students' interest, but fail to give out a elaborate method to do so.
+
+\subsection{Research Purpose and Significance}
+
+Since schools ought to go their great length offer colorful and meaningful activities to meet the need of students, this paper conducts research in the hope of offering a practical solution in a statistical way, This paper demonstrates the data set in a brand new manner, evaluates the positive and negative feelings behind the data, and recommends the activities for the school to refer to. The research purpose can be shown as below:
+
+i. To demonstrate the data set in a brand new manner.
+
+ii. To evaluates the positive and negative feelings behind the data.
+
+iii. To recommends the activities for the school to refer to.
+
+The results of this paper will be of great reference and help to schools by offering a clear and vivid explanation of what kinds of activities are more welcomed. Thus they can hold more of the activities. The leader of the school can consequently adjust their activities in schools according to this paper to achieve a higher degree of satisfaction.
+
+\subsection{Research Method and General Process}
+
+Figure \ref{figure_1} above presents the whole modeling process. This paper extracts the data at the very beginning. In order to solve the problem illustrated above, this paper considers to divide the whole process into several parts. First this paper needs to segments the words, since the program cannot analyze the sentences as a whole. Then this paper counts the frequency of the words and shows the part-of-speech of the words as the cornerstone of the whole process. Next, this paper employs two distinct techniques to define and determine how positive or negative the words are. Finally, this paper applies Support Vector Machine to the data to obtain the words that are critical to judge whether each data is positive or negative. Finally this paper reaches the conclusion and offers some recommendation to the supervisor of the school on the welcomed activities.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=14.07cm,height=7.89cm]{figure/1.jpg}\\
+  \caption{工作流程图}\label{figure_1}
+\end{figure}
+
+\section{Data Extraction}
+
+With the help of my advisor and my school, this paper obtains the data in the CQE system of grade G17(senior 2 in 2018-2019 academic year) in Tsinghua University High School from February, 2018 to June, 2018. The data can be searched in the appendix. This paper has 6 dimensions to study, which are PE Practices(体育类实践活动), Innovative Achievement(创新成果), Excursion Experiences(游学经历), Club Events(社团活动), Artistic Achievements(艺术成果展示), and Artistic Practices(艺术类实践活动).
+
+\section{JIEBA Word Segmentation}
+
+\subsection{JIEBA introduction}
+JIEBA module plays a fundamental role in the research. Since the original data is in Chinese rather than English, this paper need to divide sentences into separate words. In English, spaces mark the separation between words; in Chinese, this paper need to use other technique.
+
+Mechanical word segmentation algorithm based on string matching. Match the string to be split with the entries in a sufficiently large machine dictionary. It can be divided into forward matching and reverse matching, maximum length matching and minimum length matching, and an integrated method combining simple word segmentation and word segmentation with tagging process. So the commonly used methods are: forward maximum matching, reverse maximum matching and least segmentation. In practical application, mechanical word segmentation is used as the initial segmentation method, and language information is used to improve the accuracy of segmentation. Priority is given to the recognition of words with obvious features. With these words as breakpoints, the original string is divided into smaller strings and then matched mechanically to reduce the matching error rate or to combine word segmentation with part-of-speech tagging.
+
+The more adjacent words appear at the same time, the more likely they are to form a word. The frequency of words in the text is counted. The word segmentation method based on the frequency statistics of words is a full segmentation method. JIEBA is a statistical word segmentation method which uses dynamic programming to find the maximum probabilistic path and find the maximum word frequency-based grouping combination.
+
+The basic principle of JIEBA module is as such. It has a word library which contains all the word in. The module make a match from the target sentence to the word library. As long as a word exist in the sentence, the word becomes an output of the word segmentation result, which is called \emph{whole mode}(全模式). It also have another method which is \emph{accurate mode}(精确模式), which aims to cut the sentence as accurate as possible.
+
+Whole Mode: 我/ 来到/ 北京/ 清华/ 清华大学/ 华大/ 大学.
+
+Accurate Mode: 我/ 来到/ 北京/ 清华大学.
+
+JIEBA can also remove the stopwords. Removing words means to have a file to store articles to be changed, a file to store the deactivated table, and then compare with the words in the deactivated table, the same words are deleted, and finally the results are stored in a file. Stopwords can effectively solve the problem of getting invalid keywords.
+
+\subsection{JIEBA Word Frequency Analysis}
+
+This paper apply JIEBA segmentation and word frequency analysis to the data and find out the most welcomed activities.The stopwords are shown as follows:
+
+\begin{table}
+  \centering
+  \begin{tabular}{|l|}
+\hline
+\multicolumn{1}{|c|}{力学竞赛} \\ \hline
+创新英语                       \\ \hline
+圣陶                         \\ \hline
+培文                         \\ \hline
+数理化                        \\ \hline
+应用数学                       \\ \hline
+高一数学                       \\ \hline
+东方少年                       \\ \hline
+钱学森                        \\ \hline
+钱班                         \\ \hline
+\end{tabular}
+  \caption{Stopwords in JIEBA}\label{stopwords}
+\end{table}
+
+With the stopwords, part of the results are shown as follows. The full results are shown in the appendix. Meanwhile, this paper also made bar charts to show the results directly. 
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/tiyu.jpg}\\
+  \caption{Bar chart of PE}\label{tiyu_bar}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/chuangxin.jpg}\\
+  \caption{Bar chart of creativity}\label{chuangxin_bar}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/youxue.jpg}\\
+  \caption{Bar chart of excursion}\label{youxue_bar}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/shetuan.jpg}\\
+  \caption{Bar chart of club}\label{shetuan_bar}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/yishushijian.jpg}\\
+  \caption{Bar chart of artistic practices}\label{yishushijian_bar}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/yishuchengguo.jpg}\\
+  \caption{Bar chart of aesthetic achievements}\label{yishuchengguo_bar}
+\end{figure}
+
+In the figures shown above, we can see that in the academic activities, the competitions take a major proportion, including the composition, mathematics, and English. Among all of the clubs, the chorus and the debate club are the most commonly seen clubs. The sports games, basketball match, and the soccer match are the most frequent activities. Art festival offer students an ideal platform for the students to show their talent. Photography and painting are extremely popular.
+
+\section{Supporting Vector Machine}
+
+
+\ref(SVM)：
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=6.18cmp,height=3.64cm]{figure/SVM.jpg}\\
+  \caption{支持向量机示意图}\label{SVM}
+\end{figure}
+
+
+
+\section{WORDCLOUD}
+
+\subsection{WORDCLOUD模块介绍}
+
+WORDCLOUD module in PYTHON is mainly used to serve as a tool for rapid reading. It can not only extract keywords, but also obtain sentences. Based on the keywords extracted by JIEBA module, it generates wordclouds which vividly shows the frequency of the words. The major advantage of the module is that the user is able to set the shape and the color of the background according to the interest of the users. In this way, the users no longer need to read the words, but the pictures instead, which is likely to be favored.
+
+With the aid of WORDCLOUD module, this paper generates wordclouds through the set of parameters and load the data.
+
+\subsection{WORDCLOUD词云制作}
+
+This paper first convert the format of the source file from UTF-8 into ANSI. Then this paper obtain current path of the files, read the text \emph{alice.txt} under the category \emph{example}, and set background picture, color, maximum word number and maximum character size. The maximum number of words is 2000. Finally, this paper input the ensemble of the text, generate the RGB value from the background, and save the wordcloud.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/tiyuwordcloud.jpg}\\
+  \caption{Wordcloud of PE}\label{tiyu_wordcloud}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/chuangxinwordcloud.jpg}\\
+  \caption{Wordcloud of creativity}\label{chuangxin_wordcloud}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/youxuewordcloud.jpg}\\
+  \caption{Wordcloud of excursion}\label{youxue_wordcloud}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/shetuanwordcloud.jpg}\\
+  \caption{Wordcloud of club}\label{shetuan_wordcloud}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/yishushijianwordcloud.jpg}\\
+  \caption{Wordcloud of artistic practices}\label{yishushijian_wordcloud}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=15cm]{figure/yishuchengguowordcloud.jpg}\\
+  \caption{Wordcloud of aesthetic achievements}\label{yishuchengguo_wordcloud}
+\end{figure}
+
+In the figures shown above, we can see that in the academic activities, the competitions take a major proportion, including the composition, mathematics, and English. Among all of the clubs, the chorus and the debate club are the most commonly seen clubs. The sports games, basketball match, and the soccer match are the most frequent activities. Art festival offer students an ideal platform for the students to show their talent. Photography and painting are extremely popular.
+
+\section{Emotion Evaluation}
+
+\subsection{SnowNLP}
+
+\subsection{}
+
+\section{Conclusion}
+
+
+\section{Acknowledgement}
+
+
+\newpage
+
+\section{Bibliography}
+
+[1] https://gzzp.bjedu.cn, Comprehensive Quality Evaluation Platform for Beijing General High School Students [EB/OL].
+
+[2] Ze L., Reflections on the Evaluation of Comprehensive Quality in the Reform of College Entrance Examination [J], Contemporary Educational Science, 2017(4): 32-36, 45.
+
+[3] Bingbing X., From Comprehensive Quality Assessment to Key Competencies Assessment----Research on the Transition of Student Assessment in High School [D]. Shanghai, China: East China Normal University, 2016.
+
+[4] Zhaohui C., Study on Implementation of Senior High School students' Comprehensive Quality Assessment [D]. Zhengzhou, China: Henan University, 2016.
+
+[5] Huoyun C. Zheng K., Research on Comprehensive Quality Evaluation of Senior High School Students [J], Global Education, 2010(9): 3-8,12.
+
+[6] Jing W. Xi J. Dong L., Evaluation of Students’ Comprehensive Quality with the Aim of Promoting Development—The Concept and Practice of the Construction of the Second Class Transcript [J], Learning Resource and Technology, 2018(9): 132-137.
+
+[7] Xiaoming W. Nianjin D., History and Evolution of Ten Years Reform of the Comprehensive Quality Evaluation of Students in General Senior High School [J], Modern Education and Management, 2015(11): 74-79.
+
+[8] Zhijun L. Hongxia Z., Evaluation on Senior High School Students Comprehensive Quality: Reality, Problem and Prospect [J], Curriculum, Teaching Material and Method, 33(1): 18-23.
+
+[9] Long C., The Difficulty and Breakthrough of "Hard Link" between Comprehensive Quality Evaluation and College Enrollment [J], Journal of The Chinese Society of Education, 2017(7): 19-23.
+
+[10] Dianjun W. Hui J. Weidong Meng. The High School Attached to Tsinghua University, Development and Application of the Comprehensive Student Quality Evaluation System Based on Big Data: Innovative Practice of the High School Attached to Tsinghua University [J], Chinese Examinations, 2018(1): 46-52, 66.
+
+\end{document}

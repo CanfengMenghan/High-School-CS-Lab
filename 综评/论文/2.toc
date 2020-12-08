@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Introduction}{5}
+\contentsline {subsection}{\numberline {1.1}Research Background}{5}
+\contentsline {subsection}{\numberline {1.2}Current Research Status}{5}
+\contentsline {subsection}{\numberline {1.3}Research Purpose and Significance}{6}
+\contentsline {subsection}{\numberline {1.4}Research Method and General Process}{6}
+\contentsline {section}{\numberline {2}Data Extraction}{7}
+\contentsline {section}{\numberline {3}JIEBA Word Segmentation}{8}
+\contentsline {subsection}{\numberline {3.1}JIEBA introduction}{8}
+\contentsline {subsection}{\numberline {3.2}JIEBA Word Frequency Analysis}{9}
+\contentsline {section}{\numberline {4}WORDCLOUD}{14}
+\contentsline {subsection}{\numberline {4.1}WORDCLOUD Introduction}{14}
+\contentsline {subsection}{\numberline {4.2}WORDCLOUD Production}{14}
+\contentsline {section}{\numberline {5}Emotional Evaluation}{14}
+\contentsline {subsection}{\numberline {5.1}SnowNLP}{19}
+\contentsline {subsection}{\numberline {5.2}Original Emotional Evaluation Method}{20}
+\contentsline {subsubsection}{\numberline {5.2.1}Enumeration of word lists and Preparation of the data}{20}
+\contentsline {subsubsection}{\numberline {5.2.2}Definition of scores of emotional words}{22}
+\contentsline {subsubsection}{\numberline {5.2.3}Definition of scores of degree words}{22}
+\contentsline {subsubsection}{\numberline {5.2.4}Definition of scores of exclamation marks}{22}
+\contentsline {subsubsection}{\numberline {5.2.5}Definition of scores of reverse words}{23}
+\contentsline {subsubsection}{\numberline {5.2.6}Definition of scores of a whole paragraph}{23}
+\contentsline {subsection}{\numberline {5.3}Cross-test between SnowNLP and Original Emotion Evaluation Method}{23}
+\contentsline {section}{\numberline {6}Supporting Vector Machine}{24}
+\contentsline {subsection}{\numberline {6.1}Analysis of SVM classification}{24}
+\contentsline {subsection}{\numberline {6.2}Analysis of Timing Function}{25}
+\contentsline {subsection}{\numberline {6.3}Analysis of SVM classification}{25}
+\contentsline {subsection}{\numberline {6.4}Analysis of Bayes Distinction}{26}
+\contentsline {subsection}{\numberline {6.5}Final Results}{27}
+\contentsline {subsection}{\numberline {6.6}Cross-test between SVM and Word Frequency}{28}
+\contentsline {section}{\numberline {7}Evaluation of Positive and Negative Aspects}{28}
+\contentsline {section}{\numberline {8}Conclusion}{28}
+\contentsline {subsection}{\numberline {8.1}Strength and Weekness}{28}
+\contentsline {subsection}{\numberline {8.2}Conclusion}{30}
+\contentsline {section}{\numberline {9}Acknowledgement}{32}
+\contentsline {section}{\numberline {10}Declaration}{32}
+\contentsline {section}{\numberline {11}Bibliography}{33}
